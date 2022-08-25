@@ -67,7 +67,7 @@ const Formdata = () => {
 
   // Creating new data and submitting
 
-  const handlesubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const unid = Math.floor(Math.random() * 100);
     state.id = unid;
@@ -144,7 +144,7 @@ const Formdata = () => {
     <div className="allcontent">
       <div>
         <div className="container">
-          <form className="form" id="myForm">
+          <form className="form" id="myForm" onSubmit={handleSubmit}>
             <h2 id="formtitle">Please Enter Your Information</h2>
             <input
               type="text"
@@ -157,6 +157,7 @@ const Formdata = () => {
                   key: "username",
                 })
               }
+              required
             />
 
             <input
@@ -170,6 +171,7 @@ const Formdata = () => {
                   key: "email",
                 })
               }
+              required
             />
 
             <input
@@ -183,6 +185,7 @@ const Formdata = () => {
                   key: "phone",
                 })
               }
+              required
             />
             <textarea
               type="text"
@@ -197,15 +200,10 @@ const Formdata = () => {
                 })
               }
               placeholder="Enter Descrption"
+              required
             />
             <div className="buttondiv">
-              {!active ? (
-                <button className="btn" onClick={(e) => handlesubmit(e)}>
-                  Submit
-                </button>
-              ) : (
-                ""
-              )}
+              {!active ? <button className="btn">Submit</button> : ""}
 
               {active ? (
                 <button className="btn" onClick={(e) => handleUpdate(e)}>

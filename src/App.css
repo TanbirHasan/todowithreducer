@@ -177,6 +177,7 @@ box-shadow:  14px 14px 20px #177b73,
 .userinfo {
   margin-top: 50px;
   margin-bottom: 100px!important;
+  margin-left: 15px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
