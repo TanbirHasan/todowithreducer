@@ -44,7 +44,7 @@ const Formdata = () => {
   }
 
   // Function for storing the data
-  function storedata(state) {
+  function storeData(state) {
     let msgArr = JSON.parse(localStorage.getItem("user"))
       ? JSON.parse(localStorage.getItem("user"))
       : [];
@@ -71,17 +71,17 @@ const Formdata = () => {
     e.preventDefault();
     const unid = Math.floor(Math.random() * 100);
     state.id = unid;
-    storedata(state);
-    makedispatch();
+    storeData(state);
+    makeDispatch();
   };
 
   // Selecting the data for Update
-  const handleedit = (id) => {
+  const handleEdit = (id) => {
     const allusers = JSON.parse(localStorage.getItem("user"));
     const newdata = allusers?.filter((data) => data.id == id);
     console.log(newdata);
 
-    updatedata(newdata);
+    updateData(newdata);
     setActive(true);
     setDataupdate(newdata[0]);
   };
@@ -106,13 +106,13 @@ const Formdata = () => {
     localStorage.setItem("user", JSON.stringify(sameItem));
 
     alert("data updated succesfully");
-    makedispatch();
+    makeDispatch();
     setActive(false);
   };
 
   // Update Function
 
-  function updatedata(data) {
+  function updateData(data) {
     data.map((newdata) => {
       var keys = Object.keys(newdata);
       console.log(keys);
@@ -133,11 +133,11 @@ const Formdata = () => {
     const remainingdata = users?.filter((data) => data.id != id);
     localStorage.setItem("user", JSON.stringify(remainingdata));
     setUsers(remainingdata);
-    makedispatch();
+    makeDispatch();
     setActive(false);
   };
 
-  function makedispatch() {
+  function makeDispatch() {
     dispatch({ type: "clear_form" });
   }
   return (
@@ -231,7 +231,7 @@ const Formdata = () => {
             <h3>Phone : {data.phone}</h3>
             <p>Description : {data.description}</p>
             <div className="button">
-              <button className="edit" onClick={() => handleedit(data.id)}>
+              <button className="edit" onClick={() => handleEdit(data.id)}>
                 Edit
               </button>
               <button className="delete" onClick={() => handledelete(data.id)}>
