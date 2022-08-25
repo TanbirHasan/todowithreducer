@@ -72,7 +72,7 @@ const Formdata = () => {
     const unid = Math.floor(Math.random() * 100);
     state.id = unid;
     storedata(state);
-    dispatch({ type: "clear_form" });
+    makedispatch();
   };
 
   // Selecting the data for Update
@@ -106,7 +106,7 @@ const Formdata = () => {
     localStorage.setItem("user", JSON.stringify(sameItem));
 
     alert("data updated succesfully");
-    dispatch({ type: "clear_form" });
+    makedispatch();
     setActive(false);
   };
 
@@ -133,12 +133,19 @@ const Formdata = () => {
     const remainingdata = users?.filter((data) => data.id != id);
     localStorage.setItem("user", JSON.stringify(remainingdata));
     setUsers(remainingdata);
+    makedispatch();
+    setActive(false);
   };
+
+  function makedispatch() {
+    dispatch({ type: "clear_form" });
+  }
   return (
     <div className="allcontent">
       <div>
         <div className="container">
           <form className="form" id="myForm">
+            <h2 id="formtitle">Please Enter Your Information</h2>
             <input
               type="text"
               placeholder="Name"
